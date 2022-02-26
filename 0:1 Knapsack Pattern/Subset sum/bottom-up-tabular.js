@@ -16,7 +16,7 @@ const canPartition = (numbers, sum) => {
     }
 
     // with only one number, we can form a subset only when the required sum is equal to its value
-    for (let s = 1; s < sum; s++) {
+    for (let s = 1; s <= sum; s++) {
         dp[0][s] = numbers[0] === s;
     }
 

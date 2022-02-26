@@ -30,7 +30,7 @@ const canPartition = (numbers) => {
     }
 
     // with only one number, we can form a subset only when the required sum is equal to its value
-    for (let s = 1; s < sum; s++) {
+    for (let s = 1; s <= sum; s++) {
         dp[0][s] = numbers[0] === s;
     }
 
@@ -82,7 +82,7 @@ const canPartitionOptimalSpace = (numbers) => {
     dp[0] = true;
 
     // with only one number, we can form a subset only when the required sum is equal to its value
-    for (let s = 1; s < sum; s++) {
+    for (let s = 1; s <= sum; s++) {
         dp[s] = numbers[0] === s;
     }
 

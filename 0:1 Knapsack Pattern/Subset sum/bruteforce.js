@@ -1,3 +1,6 @@
+//O(2^n) time | O(n) space
+//where n is the total number of elements
+
 const canPartition = (numbers, sum) => {
     const n = numbers.length;
 
