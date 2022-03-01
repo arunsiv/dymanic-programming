@@ -1,4 +1,4 @@
-//O(N*C) time | O(N∗C) space
+//O(N*C) time | O(N∗C) space [i.e. O(N*C) + O(N) => O(N*C) -- O(N) is for recursion stack]
 //where ‘N’ is the number of items and ‘C’ is the knapsack capacity
 
 const solveKnapsack = (profits, weights, capacity) => {

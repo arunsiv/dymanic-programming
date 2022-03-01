@@ -46,7 +46,7 @@ const solveKnapsack = (profits, weights, capacity) => {
     //print selected elements
     printSelectedElements(dp, weights, profits, capacity);
 
-    console.log(dp);
+    //console.log(dp);
     // maximum profit will be at the bottom-right corner.
     return dp[n - 1][capacity];
 };
@@ -71,7 +71,11 @@ const printSelectedElements = (dp, weights, profits, capacity) => {
     console.log(`Selected weights: ${selectedWeights}`);
 };
 
-var profits = [1, 6, 10, 16];
-var weights = [1, 2, 3, 5];
-console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 7)}`);
-console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 6)}`);
+// var profits = [1, 6, 10, 16];
+// var weights = [1, 2, 3, 5];
+// console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 25)}`);
+// console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 6)}`);
+
+var profits = [15, 20, 50];
+var weights = [1, 2, 3];
+console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 5)}`);

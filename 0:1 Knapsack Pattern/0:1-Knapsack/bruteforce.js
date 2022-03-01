@@ -24,9 +24,13 @@ const knapsackRecursive = (profits, weights, capacity, currentIndex) => {
     return Math.max(profit1, profit2);
 };
 
-var profits = [1, 6, 10, 16];
-var weights = [1, 2, 3, 5];
+// var profits = [1, 6, 10, 16];
+// var weights = [1, 2, 3, 5];
 
-console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 7)}`);
-console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 6)}`);
-console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 0)}`);
+// console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 7)}`);
+// console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 6)}`);
+// console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 0)}`);
+
+var profits = [15, 50, 60, 90];
+var weights = [1, 3, 4, 5];
+console.log(`Total knapsack profit: ---> ${solveKnapsack(profits, weights, 25)}`);
