@@ -20,7 +20,7 @@ const countChange = (denominations, total) => {
     }
 
     for (let t = 0; t <= total; t++) {
-        dp[0][t] = denominations[0] <= total ? denominations[0] : 0; 
+        dp[0][t] = denominations[0] <= t ? denominations[0] : 0; 
     }
 
     for (let i = 1; i < n; i++) {
@@ -45,5 +45,37 @@ const countChange = (denominations, total) => {
     return dp[n - 1][total];
 }
 
-//console.log(`Number of ways to make change: ---> ${countChange([1, 2, 3], 5)}`);
-console.log(`Number of ways to make change: ---> ${countChange([1, 2, 3], 10)}`);
+const countChangeSpaceOptimal = (denominations, total) => {
+    //base checks
+    if (total === 0) {
+        return 1;
+    }
+    
+    const n = denominations.length;
+    if (n === 0) {
+        return 0;
+    }
+
+    const dp = Array(n).fill(0);
+    dp[0] = 1;
+
+    for (let t = 1; t <= total; t++) {
+        dp[t] = denominations[0] <= total ? denominations[0] : 0; 
+    }
+
+    //console.log(dp);
+
+    for (let i = 1; i < n; i++) {
+        for (let t = total; t >= 0; t--) {
+            if (t >= denominations[i]) {
+                dp[t] += dp[t - denominations[i]];
+            }
+        }
+    }
+
+    console.log(dp);
+    return dp[total];
+}
+
+console.log(`Number of ways to make change: ---> ${countChange([1, 2, 3], 5)}`);
+//console.log(`Number of ways to make change: ---> ${countChangeSpaceOptimal([1, 2, 3], 10)}`);
