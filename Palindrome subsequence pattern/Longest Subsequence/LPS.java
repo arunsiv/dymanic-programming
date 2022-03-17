@@ -1,5 +1,5 @@
 public class LPS {
-    // O(2^n) time | O(n) space
+    // O(3^n) time | O(n) space
     public int findLPSLengthBruteForce(String str) {
         return findLPSLengthBruteForceRecursive(str, 0, str.length() - 1);
     }
