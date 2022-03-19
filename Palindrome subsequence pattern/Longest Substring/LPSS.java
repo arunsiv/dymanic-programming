@@ -78,6 +78,7 @@ public class LPSS {
         return dp[startIndex][endIndex];
     }
 
+    // O(N^2) time | O(N^2) space
     public int findLPSSLengthBottomUp(String str) {
         int n = str.length();
 

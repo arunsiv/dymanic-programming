@@ -27,7 +27,8 @@ public class LPS {
     }
 
     // O(N^2) time -> N * N
-    // O(N^2) space -> O(N^2 + N) = O(N^2) [O(N^2) for dp array & O(N) for recursive stack]
+    // O(N^2) space -> O(N^2 + N) = O(N^2) [O(N^2) for dp array & O(N) for recursive
+    // stack]
     // where N is the length of the string
     public int findLPSLengthTopDown(String str) {
         Integer[][] dp = new Integer[str.length()][str.length()];
@@ -65,7 +66,7 @@ public class LPS {
     public int findLPSLengthBottomUp(String str) {
         // base checks
         int n = str.length();
-        //System.out.println("n: " + n);
+        // System.out.println("n: " + n);
 
         if (n == 0) {
             return 0;
@@ -83,9 +84,9 @@ public class LPS {
 
         //
         for (int startIndex = n - 1; startIndex >= 0; startIndex--) {
-            //System.out.println(startIndex);
+            // System.out.println(startIndex);
             for (int endIndex = startIndex + 1; endIndex < n; endIndex++) {
-                //System.out.println(startIndex + " :: " + endIndex);
+                // System.out.println(startIndex + " :: " + endIndex);
                 if (str.charAt(startIndex) == str.charAt(endIndex)) {
                     dp[startIndex][endIndex] = 2 + dp[startIndex + 1][endIndex - 1];
                 } else {
@@ -104,6 +105,40 @@ public class LPS {
         return dp[0][n - 1];
     }
 
+    // O(N^2) time | O(N^2) space
+    // where N is the length of the string
+    public int findLPSLengthBottomUp2(String str) {
+        int n = str.length();
+
+        if (n ==0) {
+            return 0;
+        }
+
+        if (n == 1) {
+            return 1;
+        }
+
+        String strRev = new StringBuilder(str).reverse().toString();
+
+        int[][] dp = new int[n + 1][n + 1];
+
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                dp[i + 1][j + 1] = str.charAt(i) == strRev.charAt(j) ? dp[i][j] + 1
+                        : Math.max(dp[i + 1][j], dp[i][j + 1]);
+            }
+        }
+
+        for (int startIndex = 0; startIndex <= n; startIndex++) {
+            for (int endIndex = 0; endIndex <= n; endIndex++) {
+                System.out.print(dp[startIndex][endIndex] + "\t");
+            }
+            System.out.println("");
+        }
+
+        return dp[n][n];
+    }
+
     public static void main(String[] args) {
         LPS lps = new LPS();
         // System.out.println(lps.findLPSLengthBruteForce("abdbca"));
@@ -116,9 +151,14 @@ public class LPS {
         // System.out.println(lps.findLPSLengthTopDown("pqr"));
         // System.out.println(lps.findLPSLengthTopDown(""));
 
-        //System.out.println(lps.findLPSLengthBottomUp("abdbca"));
-        //System.out.println(lps.findLPSLengthBottomUp("cddpd"));
-        System.out.println(lps.findLPSLengthBottomUp("pqr"));
-        System.out.println(lps.findLPSLengthBottomUp(""));
+        System.out.println(lps.findLPSLengthBottomUp("abdbca"));
+        // System.out.println(lps.findLPSLengthBottomUp("cddpd"));
+        // System.out.println(lps.findLPSLengthBottomUp("pqr"));
+        // System.out.println(lps.findLPSLengthBottomUp(""));
+
+        System.out.println(lps.findLPSLengthBottomUp2("abdbca"));
+        // System.out.println(lps.findLPSLengthBottomUp2("cddpd"));
+        // System.out.println(lps.findLPSLengthBottomUp2("pqr"));
+        // System.out.println(lps.findLPSLengthBottomUp2(""));
     }
 }
