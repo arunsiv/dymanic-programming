@@ -117,6 +117,55 @@ public class LPSS {
         return maxLength;
     }
 
+    public int findLPSSAnotherApproach(String s) {
+        if (s == null || s.length() <= 1) {
+            return 0;
+        }
+
+        int N = s.length() - 1;
+        int start = 0, end = 0;
+
+        char[] letters = s.toCharArray();
+        String max = "";
+
+        for (int i = 0; i <= N; i++) {
+
+            char center = letters[i];
+
+            start = i;
+            end = i;
+
+            // expand around the center from left to right, and move past duplicates of center
+            while (end <= N && letters[end] == center) {
+                end++;
+            }
+
+            // expand around the center from left to right, and move past duplicates of center
+            while (start >= 0 && letters[start] == center) {
+                start--;
+            }
+
+            //Now check if the chars at both sides of the centre match
+            while (start >= 0 && end <= N) {
+                if (letters[start] != letters[end]) {
+                    break;
+                }
+
+                start--;
+                end++;
+            }
+
+            String palindrome = s.substring(start + 1, end);
+            System.out.println("palindrome: " + palindrome);
+
+            max = palindrome.length() > max.length() ? palindrome : max;
+        }
+
+        System.out.println("----------");
+        System.out.println("LPSS: " + max);
+        return max.length();
+    }
+
     public static void main(String[] args) {
         LPSS lpss = new LPSS();
         // System.out.println(lpss.findLPSSLengthBruteForce("abdbca"));
@@ -131,10 +180,12 @@ public class LPSS {
         // System.out.println(lpss.findLPSSLengthTopDown("malayalam"));
         // System.out.println(lpss.findLPSSLengthTopDown(""));
 
-        System.out.println(lpss.findLPSSLengthBottomUp("abdbca"));
+        // System.out.println(lpss.findLPSSLengthBottomUp("xxaaaayyy"));
         // System.out.println(lpss.findLPSSLengthBottomUp("cddpd"));
         // System.out.println(lpss.findLPSSLengthBottomUp("pqr"));
         // System.out.println(lpss.findLPSSLengthBottomUp("malayalam"));
         // System.out.println(lpss.findLPSSLengthBottomUp(""));
+
+        System.out.println(lpss.findLPSSAnotherApproach("cddpd"));
     }
 }
