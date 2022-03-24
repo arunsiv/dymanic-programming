@@ -86,12 +86,12 @@ public class LCS {
             }
         }
 
-        for (int startIndex = 0; startIndex <= 1; startIndex++) {
-            for (int endIndex = 0; endIndex <= s2.length(); endIndex++) {
-                System.out.print(dp[startIndex][endIndex] + "\t");
-            }
-            System.out.println("");
-        }
+        // for (int startIndex = 0; startIndex <= 1; startIndex++) {
+        //     for (int endIndex = 0; endIndex <= s2.length(); endIndex++) {
+        //         System.out.print(dp[startIndex][endIndex] + "\t");
+        //     }
+        //     System.out.println("");
+        // }
 
         return maxLength;
     }
